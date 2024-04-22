@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${DMSans.variable}`}>
-      <body>
+      <body className="bg-[#070815] text-white">
         <Header />
         <main>{children}</main>
         <Footer />
