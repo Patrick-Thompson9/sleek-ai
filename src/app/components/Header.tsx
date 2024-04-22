@@ -1,10 +1,13 @@
-import WordMark from "@/app/components/WordMark";
+import Navbar from "@/app/components/Navbar";
+import { createClient } from "@/prismicio";
 
-function Header() {
+async function Header() {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
   return (
-    <div>
-      <WordMark />
-    </div>
+    <header>
+      <Navbar settings={settings} />
+    </header>
   );
 }
 

@@ -7,7 +7,7 @@ async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   return (
-    <div className="flex flex-col items-center justify-between gap-6 border-t border-slate-600 px-8 py-7 md:flex-row">
+    <footer className="flex flex-col items-center justify-between gap-6 border-t border-slate-600 px-8 py-7 md:flex-row">
       <Link href="/">
         <WordMark />
         <span className="sr-only">Home Page</span>
@@ -26,7 +26,7 @@ async function Footer() {
           ))}
         </ul>
       </nav>
-    </div>
+    </footer>
   );
 }
 
