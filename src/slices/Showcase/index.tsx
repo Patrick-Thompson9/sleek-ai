@@ -4,6 +4,12 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import clsx from "clsx";
+import { PiArrowsClockwise, PiGearDuotone } from "react-icons/pi";
+
+const icons = {
+  cycle: <PiArrowsClockwise />,
+  gear: <PiGearDuotone />,
+};
 
 /**
  * Props for `Showcase`.
@@ -33,11 +39,13 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
       />
       <div className="mt-16 grid items-center rounded-xl border-blue-50/20 bg-gradient-to-b from-slate-50/15 p-8 backdrop-blur-sm lg:grid-cols-3 lg:py-12">
         <div className="">
-          <>{slice.primary.icon}</>
+          <div className="w-fit rounded-lg bg-blue-500/35 p-4 text-3xl">
+            <>{slice.primary.icon && icons[slice.primary.icon]}</>
+          </div>
           <div className="mt-6 text-2xl font-normal ">
             <PrismicRichText field={slice.primary.subheading} />
           </div>
-          <div className="mt-4 max-w-xl">
+          <div className="prose prose-invert mt-4 max-w-xl">
             <PrismicRichText field={slice.primary.body} />
           </div>
           <ButtonLink field={slice.primary.button_link} className="mt-6">
@@ -48,7 +56,9 @@ const Showcase = ({ slice }: ShowcaseProps): JSX.Element => {
           field={slice.primary.image}
           className={clsx(
             "max-h-fit w-auto opacity-90 shadow-2xl lg:col-span-2 lg:pt-0",
-            "lg:-order-1 lg:translate-x-[-15%]",
+            slice.variation === "reverse"
+              ? "lg:order-1 lg:translate-x-[15%]"
+              : "lg:-order-1 lg:translate-x-[-15%]",
           )}
         />
       </div>
