@@ -30,7 +30,9 @@ export default async function Page({ params }: { params: Params }) {
         </p>
         <PrismicNextImage field={page.data.logo_image} className="rounded-lg" />
       </div>
-      <SliceZone slices={page.data.slices} components={components} />
+      <div className="mx-auto">
+        <SliceZone slices={page.data.slices} components={components} />
+      </div>
     </Bounded>
   );
 }
