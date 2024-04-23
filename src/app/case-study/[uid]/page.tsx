@@ -6,6 +6,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import Bounded from "@/app/components/Bounded";
 import StarGrid from "@/app/components/StarGrid";
+import { PrismicNextImage } from "@prismicio/next";
 
 type Params = { uid: string };
 
@@ -24,6 +25,10 @@ export default async function Page({ params }: { params: Params }) {
           <p className="text-lg text-yellow-500">Case Study</p>
           <PrismicText field={page.data.description} />
         </h1>
+        <p className="mb-4 mt-8 max-w-xl text-lg text-slate-300">
+          <PrismicText field={page.data.description} />
+        </p>
+        <PrismicNextImage field={page.data.logo_image} className="rounded-lg" />
       </div>
       <SliceZone slices={page.data.slices} components={components} />
     </Bounded>
