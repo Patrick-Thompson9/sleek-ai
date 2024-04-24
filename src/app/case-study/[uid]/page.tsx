@@ -47,8 +47,8 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: `${page.data.meta_title || page.data.company + "Case Study"}`,
+    description: `${page.data.meta_description || page.data.company + "Case Study by Sleek AI"}`,
   };
 }
 
