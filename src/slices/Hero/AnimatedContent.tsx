@@ -64,7 +64,7 @@ function AnimatedContent({ slice }: { slice: Content.HeroSlice }) {
   );
 
   return (
-    <div className="relative">
+    <div className="relative" ref={container}>
       <StarGrid />
       {isFilled.richText(slice.primary.heading) && (
         <h1 className="hero__heading stext-balance text-center text-5xl font-medium opacity-0 md:text-7xl">
