@@ -8,17 +8,10 @@ import {
 import StarBackground from "./StarBackground";
 import background from "./background.jpg";
 import Image from "next/image";
-import {
-  FaDigitalOcean,
-  FaCloudflare,
-  FaFigma,
-  FaGithub,
-  FaFly,
-  FaNpm,
-} from "react-icons/fa6";
 import React from "react";
 import StylizedLogoMark from "./StylizedLogoMark";
 import clsx from "clsx";
+import AnimatedContent from "./AnimatedContent";
 
 /**
  * Props for `Integrations`.
@@ -29,15 +22,6 @@ export type IntegrationsProps = SliceComponentProps<Content.IntegrationsSlice>;
  * Component for "Integrations" Slices.
  */
 const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
-  const icons = {
-    cloudflare: <FaCloudflare />,
-    digitalocean: <FaDigitalOcean />,
-    figma: <FaFigma />,
-    github: <FaGithub />,
-    fly: <FaFly />,
-    npm: <FaNpm />,
-  };
-
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -59,31 +43,7 @@ const Integrations = ({ slice }: IntegrationsProps): JSX.Element => {
         <div className="mt-6 max-w-md text-balance text-center text-slate-300">
           <PrismicRichText field={slice.primary.body} />
         </div>
-        <div className="mt-20 flex flex-col items-center md:flex-row">
-          {slice.items.map((item, index) => (
-            <React.Fragment key={index}>
-              {index === Math.floor(slice.items.length / 2) && (
-                <>
-                  <StylizedLogoMark />
-                  <div className="signal-line rotate-180 bg-gradient-to-t" />
-                </>
-              )}
-              <div className="pulsing-icon flex aspect-square shrink-0 items-center justify-center rounded-full border-blue-50/30 bg-blue-50/25 p-3 text-3xl opacity-40 md:text-4xl lg:text-5xl">
-                {item.icon && icons[item.icon]}
-              </div>
-              {index !== slice.items.length - 1 && (
-                <div
-                  className={clsx(
-                    "signal-line",
-                    index >= Math.floor(slice.items.length / 2)
-                      ? "rotate-180"
-                      : "rotate-0",
-                  )}
-                />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+        <AnimatedContent slice={slice} />
       </div>
     </Bounded>
   );
