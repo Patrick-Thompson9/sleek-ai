@@ -56,6 +56,39 @@ export default function StarGrid() {
       });
 
       //loop animation
+      tl.to(".star-grid-item", {
+        delay: 8,
+        repeat: -1,
+        repeatDelay: 8,
+
+        keyframes: [
+          {
+            opacity: 0.4,
+            rotate: "+=180",
+            color: "#ffd057",
+            scale: 3,
+            duration: 0.6,
+            stagger: {
+              amount: 2,
+              grid: grid,
+              from: "center",
+            },
+          },
+          {
+            opacity: 0.2,
+            rotate: "+=180",
+            color: "#fff",
+            scale: 1,
+            delay: -1.7,
+            duration: 0.6,
+            stagger: {
+              amount: 3,
+              grid: grid,
+              from: "center",
+            },
+          },
+        ],
+      });
     },
     { scope: container },
   );
